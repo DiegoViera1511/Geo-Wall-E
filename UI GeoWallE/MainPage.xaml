@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="UI_GeoWallE.MainPage"
+             BackgroundColor="Black">
+
+
+    <Grid Padding ="5"
+    RowSpacing="5"
+    ColumnSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+            
+        <Frame
+        BackgroundColor="#FF414141"
+        Padding="5"
+        Grid.Row="0"
+        Grid.Column="0"
+        CornerRadius="0">
+            <ScrollView 
+            VerticalOptions="FillAndExpand"
+            Orientation="Vertical"
+            Margin="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="65"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label
+                    Text="1&#10;2&#10;3&#10;4&#10;5"
+                    BackgroundColor="Black"
+                    TextColor="#FF414141"
+                    FontSize="20"
+                    Grid.Column="0"
+                    Padding="3.8"
+                    HorizontalTextAlignment="Center"/>
+                    <Editor
+                            x:Name = "Code"
+                            Text =""
+                            TextColor="Green"
+                            BackgroundColor="Black"
+                            Grid.Column="1"
+                            AutoSize="TextChanges"
+                            FontSize="20"/> 
+                </Grid>
+            </ScrollView>
+        </Frame>
+
+        <Frame
+        BackgroundColor="#FF414141"
+        Padding="5"
+        Grid.Row="1"
+        Grid.Column="0"
+        CornerRadius="0">
+            <ScrollView Padding ="5"
+                VerticalOptions="FillAndExpand"
+                Orientation="Vertical"
+                Margin="5">
+                    <Editor
+                            x:Name = "Errors"
+                            Text =""
+                            TextColor="Red"
+                            IsReadOnly="True"
+                            BackgroundColor="Black"
+                            Grid.Row = "1"
+                            Grid.Column="0"
+                            AutoSize="TextChanges"
+                            FontSize="20"/>
+            </ScrollView>
+        </Frame>
+       
+        <Grid
+        Grid.RowSpan="2"
+        Grid.Column="1"
+        RowSpacing="5"
+        ColumnSpacing="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Frame
+            BackgroundColor="#FF414141"
+            Padding="10"
+            CornerRadius="0">
+                <HorizontalStackLayout HorizontalOptions="Center" >
+
+                    <GraphicsView Drawable="{StaticResource print}" HeightRequest="1050" WidthRequest="1095" BackgroundColor="White"/>
+
+                </HorizontalStackLayout>
+            </Frame>
+        <Frame
+        BackgroundColor="#FF414141"
+        Padding="2"
+        CornerRadius="0"
+        Grid.Row="1">
+        <Grid
+        Grid.Row="1"
+        Margin="5"
+        Padding="5"
+        ColumnSpacing="10">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+            <Button 
+            Text="Run"
+            TextColor="White"
+            BorderColor="#FF414141"
+            BackgroundColor="Black"
+            Grid.Column="0"/>
+
+            <Button 
+            Text="Save"
+            TextColor="White"
+            BorderColor="#FF414141"
+            BackgroundColor="Black"
+            Grid.Column="1"
+            />
+
+            <Button 
+            Text="Clear"
+            TextColor="White"
+            BorderColor="#FF414141"
+            BackgroundColor="Black"
+            Grid.Column="2"/>
+
+            <Button 
+            Text="Import"
+            TextColor="White"
+            BorderColor="#FF414141"
+            BackgroundColor="Black"
+            Grid.Column="3"/>
+
+            </Grid>
+        </Frame>
+        </Grid>
+    </Grid>
+    <!-- <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Hello, World!"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="32"
+                HorizontalOptions="Center" />
+
+            <Label
+                Text="Welcome to .NET Multi-platform App UI"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                x:Name="CounterBtn"
+                Text="Click me"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OnCounterClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView> -->
+
+</ContentPage>
+

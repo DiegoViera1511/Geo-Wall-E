@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.6
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI GeoWallE", "UI GeoWallE\UI GeoWallE.csproj", "{CFD465A4-A8D5-44DC-A07C-A1EB5092961D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interpreter", "Interpreter\Interpreter.csproj", "{00B5EE59-AE68-4424-B3AC-E8C0CC1FF572}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CFD465A4-A8D5-44DC-A07C-A1EB5092961D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFD465A4-A8D5-44DC-A07C-A1EB5092961D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFD465A4-A8D5-44DC-A07C-A1EB5092961D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFD465A4-A8D5-44DC-A07C-A1EB5092961D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00B5EE59-AE68-4424-B3AC-E8C0CC1FF572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00B5EE59-AE68-4424-B3AC-E8C0CC1FF572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00B5EE59-AE68-4424-B3AC-E8C0CC1FF572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00B5EE59-AE68-4424-B3AC-E8C0CC1FF572}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5D7C2FE7-C085-48C0-AB28-5DADCC7F79C0}
+	EndGlobalSection
+EndGlobal

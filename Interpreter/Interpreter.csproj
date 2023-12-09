@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="InterpreterErrors\" />
+    <None Remove="Visitors\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="InterpreterErrors\" />
+    <Folder Include="Visitors\" />
+  </ItemGroup>
+</Project>
