@@ -34,7 +34,8 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Label
-                    Text="1&#10;2&#10;3&#10;4&#10;5"
+                        x:Name="Lines"
+                    Text="1&#10;2&#10;3&#10;4&#10;5&#10;6&#10;7&#10;8&#10;9&#10;10&#10;"
                     BackgroundColor="Black"
                     TextColor="#FF414141"
                     FontSize="20"
@@ -45,6 +46,8 @@
                             x:Name = "Code"
                             Text =""
                             TextColor="Green"
+                            IsSpellCheckEnabled="False"
+                            TextChanged="Code_TextChanged"
                             BackgroundColor="Black"
                             Grid.Column="1"
                             AutoSize="TextChanges"
@@ -68,6 +71,7 @@
                             Text =""
                             TextColor="Red"
                             IsReadOnly="True"
+                            
                             BackgroundColor="Black"
                             Grid.Row = "1"
                             Grid.Column="0"
