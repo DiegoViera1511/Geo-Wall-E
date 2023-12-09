@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Interpreter.Objects
+namespace Interpreter
 {
 	public class Vector
 	{
