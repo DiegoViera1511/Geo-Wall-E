@@ -17,10 +17,14 @@ namespace Interpreter
 		
 		public Measure(double value)
 		{
-			Value = value;
+			Value = Math.Abs(value); //measure no puede ser negativo
 		}
-		
-		
 	}
 }
+			
+			
+			
+			
+		
+		
 
