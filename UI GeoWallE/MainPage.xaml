@@ -54,6 +54,8 @@
                             x:Name = "Code"
                             Text =""
                             TextColor="Green"
+                            IsSpellCheckEnabled="False"
+                            TextChanged="Code_TextChanged"
                             BackgroundColor="Black"
                             Grid.Column="1"
                             AutoSize="TextChanges"
