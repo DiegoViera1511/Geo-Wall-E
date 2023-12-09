@@ -23,15 +23,21 @@ namespace Interpreter
 
 			return new Vector(x, y);
 		}
-
-		public Vector MultiplyByScalar (double scalar , Vector vec) //multiplicación por un escalar
+		
+/// <summary>
+/// sobrecarga del operador '*' para la multiplicación de un vector por un escalar
+/// </summary>
+/// <param name="scalar">el valor del escalar tipo 'double'</param>
+/// <param name="vec"> el objeto tipo 'Vector'</param>
+/// <returns></returns>
+		public static Vector operator * (double scalar , Vector vec) //multiplicación por un escalar
 			{
 
-            double x = vec.X * scalar;
-            double y = vec.Y * scalar;
+			double x = vec.X * scalar;
+			double y = vec.Y * scalar;
 
 			return new Vector(x, y);
-        }
+		}
 	}
 }
 
