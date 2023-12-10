@@ -3,17 +3,19 @@ namespace Interpreter;
 public class Segment : Figure 
 {
 
-    private Point p1 ;
-    public Point P1{get => p1;}
-    private Point p2 ;
-    public Point P2{get => p2;}
-    private Color ColorFigure;
-    public override Color GetColor => ColorFigure;
-    public Segment(Point p1 , Point p2)
+    public Point P1 { get; }
+
+    public Point P2 { get; }
+
+    public override Color FigureColor { get; }
+
+    public override string? Text { get; set; }
+
+    public Segment(Point p1, Point p2)
     {
-        this.p1 = p1 ;
-        this.p2 = p2 ;
-        ColorFigure = Parser.actualColor ;
+        P1 = p1;
+        P2 = p2;
+        FigureColor = Parser.actualColor;
     }
 
 }

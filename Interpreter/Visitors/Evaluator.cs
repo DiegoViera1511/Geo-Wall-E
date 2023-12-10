@@ -251,7 +251,12 @@ namespace Interpreter
                 object expr = idExpr.Accept(this);
                 if(expr is Figure)
                 {
-                    Parser.Prints.Add((Figure)expr) ;
+                    Figure f = (Figure)expr;
+                    if(draw.FigureText is not null)
+                    {
+                        f.Text = draw.FigureText;
+                    }
+                    Parser.Prints.Add(f) ;
                 }
                 else if(expr is ValuesSecquence)
                 {
@@ -261,7 +266,12 @@ namespace Interpreter
                         object fig = figure.Accept(this);
                         if(fig is Figure)
                         {
-                            Parser.Prints.Add((Figure)fig);
+                            Figure f = (Figure)fig;
+                            if(draw.FigureText is not null)
+                            {
+                                f.Text = draw.FigureText;
+                            }
+                            Parser.Prints.Add(f);
                         }
                         else throw new DefaultError($"! ERROR: Draw function receives Figures not {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");
                     }
@@ -278,7 +288,12 @@ namespace Interpreter
                         object fig = figure.Accept(this);
                         if(fig is Figure)
                         {
-                            Parser.Prints.Add((Figure)fig);
+                            Figure f = (Figure)fig;
+                            if (draw.FigureText is not null)
+                            {
+                                f.Text = draw.FigureText;
+                            }
+                            Parser.Prints.Add(f);
                         }
                         else throw new DefaultError($"! ERROR: Draw function receives Figures not {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");
                     }

@@ -2,16 +2,19 @@ namespace Interpreter;
 
 public class Point : Figure
 {      
-    private double x ;
-    public double X{get => x;}
-    private double y ;
-    public double Y{get => y;}
-    private Color ColorFigure;
-    public override Color GetColor => ColorFigure;
+   
+    public double X { get; }
+
+    public double Y{ get; }
+
+    public override Color FigureColor { get; }
+
+    public override string? Text { get; set; }
+
     public Point( double x , double y)
     {
-        this.x = x ;
-        this.y = y ;
-        ColorFigure = Parser.actualColor ;
+        X = x ;
+        Y = y ;
+        FigureColor = Parser.actualColor ;
     }
 }

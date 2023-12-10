@@ -180,6 +180,8 @@ namespace Interpreter
 		public class Draw : StatementExpression
 		{
 			private Expression figureDraw;
+			private string? figureText ;
+			public string? FigureText { get; set; }
 			public Expression FigureDraw{get => figureDraw;}
 			public Draw (Expression figureDraw)
 			{

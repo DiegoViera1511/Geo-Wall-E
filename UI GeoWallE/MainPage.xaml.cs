@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 namespace UI_GeoWallE;
 
-public partial class MainPage : ContentPage
+public partial class MainPage : ContentPage 
 {
 	GSharpInterpreter GeoWallEInterpreter = new GSharpInterpreter();
 	public int CountLines;

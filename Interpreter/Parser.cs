@@ -313,7 +313,9 @@ namespace Interpreter
 
         public static  Expression LogicTerm()
         {
-            List<string> NextTokens = new List<string>(){")", "}",";",",","in","else","then","..."};
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.COMMA,TokenType.IN,TokenType.ELSE,TokenType.THEN
+            ,TokenType.THREE_DOTS , TokenType.STRING};
             Expression left = ComparisonTerm();
             while(!EndOfFile())
             {
@@ -328,7 +330,7 @@ namespace Interpreter
                     }
                     else left = new LogicOR(left , right);
                 }
-                else if(NextTokens.Contains(CurrentToken.StringForm))
+                else if(NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break ;
                 }
@@ -339,7 +341,9 @@ namespace Interpreter
 
         public static Expression EqualityTerm()
         {
-            List<string> NextTokens = new List<string>(){")","}",";",",","in","else","&","|","then","..." };
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.COMMA,TokenType.IN,TokenType.ELSE , TokenType.AND
+            , TokenType.OR,TokenType.THEN,TokenType.THREE_DOTS , TokenType.STRING};
             Expression left = ComparisonTerm();
             while(!EndOfFile())
             {
@@ -354,7 +358,7 @@ namespace Interpreter
                     }
                     else left = new NotEquality(left , right);
                 }
-                else if(!EndOfFile() && NextTokens.Contains(CurrentToken.StringForm))
+                else if(!EndOfFile() && NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break;
                 }
@@ -365,7 +369,10 @@ namespace Interpreter
 
         public static Expression ComparisonTerm()
         {
-            List<string> NextTokens = new List<string>(){")","}",";",",","in","else","&","|","then","...","==","!=" };
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.EQUAL_EQUAL , TokenType.NOT_EQUAL ,TokenType.COMMA
+            ,TokenType.IN,TokenType.ELSE , TokenType.AND , TokenType.OR,TokenType.THEN,TokenType.THREE_DOTS , TokenType.STRING};
+          
             Expression left = Term();
             while(!EndOfFile())
             {
@@ -392,7 +399,7 @@ namespace Interpreter
                         left = new ComparisonGREATER_EQUAL(left , right);
                     }
                 }
-                else if(!EndOfFile() && NextTokens.Contains(CurrentToken.StringForm))
+                else if(!EndOfFile() && NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break;
                 }
@@ -403,7 +410,11 @@ namespace Interpreter
 
         public static Expression Term()
         {
-            List<string> NextTokens = new List<string>(){";",")", "}","in",",",">","<","else","<","<=",">=","&","|","==","!=","then","..."};
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.EQUAL_EQUAL , TokenType.NOT_EQUAL ,TokenType.COMMA
+            , TokenType.LESS , TokenType.LESS_EQUAL , TokenType.GREATER , TokenType.GREATER_EQUAL,TokenType.IN,TokenType.ELSE , TokenType.AND ,
+                TokenType.OR,TokenType.THEN,TokenType.THREE_DOTS , TokenType.STRING};
+            
             Expression left = Factor();
             while(!EndOfFile())
             {
@@ -418,7 +429,7 @@ namespace Interpreter
                     }
                     else left = new Subtraction(left , right);
                 }
-                else if(NextTokens.Contains(CurrentToken.StringForm))
+                else if(NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break ;
                 }
@@ -429,7 +440,11 @@ namespace Interpreter
 
         public static Expression Factor()
         {
-            List<string> NextTokens = new List<string>(){";", ")" , "}" ,"in",",",">","<","else","<","<=",">=","&","|","==","!=","+","-","then","..."};
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.EQUAL_EQUAL , TokenType.NOT_EQUAL ,TokenType.COMMA
+            , TokenType.LESS , TokenType.LESS_EQUAL , TokenType.GREATER , TokenType.GREATER_EQUAL,TokenType.IN,TokenType.ELSE , TokenType.AND ,
+                TokenType.OR,TokenType.THEN,TokenType.THREE_DOTS , TokenType.PLUS , TokenType.MINUS , TokenType.STRING};
+            
             Expression left = PowerTerm();
             while(!EndOfFile())
             {
@@ -448,7 +463,7 @@ namespace Interpreter
                     }
                     else left = new Module(left , right);
                 }
-                else if(NextTokens.Contains(CurrentToken.StringForm))
+                else if(NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break ;
                 }
@@ -459,7 +474,12 @@ namespace Interpreter
 
         public static Expression PowerTerm()
         {
-            List<string> NextTokens = new List<string>(){";",")","}","in",",",">","<","else","<=",">=","&","|","==","!=","+","-","*","/","%","then","..."};
+            List<TokenType> NextTokens = new List<TokenType>()
+            {TokenType.RIGHT_PARENTHESIS,TokenType.RIGHT_BRACE,TokenType.EOF,TokenType.EQUAL_EQUAL , TokenType.NOT_EQUAL ,TokenType.COMMA
+            , TokenType.LESS , TokenType.LESS_EQUAL , TokenType.GREATER , TokenType.GREATER_EQUAL,TokenType.IN,TokenType.ELSE , TokenType.AND ,
+                TokenType.OR,TokenType.THEN,TokenType.THREE_DOTS , TokenType.PLUS , TokenType.MINUS,TokenType.MULTIPLICATION , TokenType.DIVISION
+            ,TokenType.MODULE ,TokenType.STRING};
+            
             Expression left = AtomTerm();
             while(!EndOfFile())
             {
@@ -469,7 +489,7 @@ namespace Interpreter
                     Expression right = AtomTerm();
                     left = new Power(left , right);
                 }
-                else if (NextTokens.Contains(CurrentToken.StringForm))
+                else if (NextTokens.Contains(CurrentToken.TypeOfToken))
                 {
                     break ;
                 }
@@ -953,7 +973,13 @@ namespace Interpreter
         public static StatementExpression DrawStmts()
         {
             Expression figureDraw = NewExpression();
-            return new StatementExpression.Draw(figureDraw);
+            StatementExpression.Draw draw = new StatementExpression.Draw(figureDraw);
+            if(CurrentToken.TypeOfToken == TokenType.STRING)
+            {
+                draw.FigureText = CurrentToken.StringForm;
+                Next();
+            }
+            return draw;
         }
 
         public static StatementExpression ColorStmts()
