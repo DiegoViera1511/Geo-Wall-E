@@ -82,7 +82,8 @@ namespace Interpreter
 
         public static Context GlobalVariables = new();
         public static Stack<Context> Contexts = new ();
-        public static Color actualColor ;
+        public static Stack<Color> ColorsStack = new();
+        public static Color actualColor { get { if (ColorsStack.Count == 0) return Color.Black; else return ColorsStack.Peek(); } }
         public static List<Figure> Prints = new();
         public  static Stack<string> AnalizeFunctionsStack = new();
         public static Token CurrentToken
@@ -110,12 +111,6 @@ namespace Interpreter
             get { if (Contexts.Count == 0) return GlobalVariables ; else return Contexts.Peek();}
         }
 
-
-        public Parser()
-        {
-            actualColor = Color.Black ;
-        }
-        
         public static void Next() 
         {   
             Index += 1 ;
@@ -140,7 +135,7 @@ namespace Interpreter
             AnalizeFunctionsStack.Clear();
             Contexts.Clear();
             Prints.Clear();
-            actualColor = Color.Black;
+            ColorsStack.Clear();
             ActualLine = 0;
             Index = 0;
         }

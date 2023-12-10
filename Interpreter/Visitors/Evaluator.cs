@@ -218,13 +218,13 @@ namespace Interpreter
 
         public object? Visit(StatementExpression.Restore restore)
         {
-            Parser.actualColor = Color.Black ;
+            Parser.ColorsStack.Pop() ;
             return null ;
         }
        
         public object? Visit(StatementExpression.SetColor setColor)
         {
-            Parser.actualColor = setColor.Color ;
+            Parser.ColorsStack.Push(setColor.Color) ;
             return null ;
         }
 
