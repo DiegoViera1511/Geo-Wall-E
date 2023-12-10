@@ -55,6 +55,8 @@
                             Text =""
                             TextColor="Green"
                             IsSpellCheckEnabled="False"
+                            IsTextPredictionEnabled="False"
+                            Keyboard="Numeric"
                             TextChanged="Code_TextChanged"
                             BackgroundColor="Black"
                             Grid.Column="1"
