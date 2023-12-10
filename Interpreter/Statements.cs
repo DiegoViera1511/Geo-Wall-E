@@ -68,6 +68,10 @@ namespace Interpreter
             public VariableSequenceDeclaration(List<string> variablesNames , Sequence valuesSequence)
             {
                 this.variablesNames = variablesNames ;
+                foreach(string varName in variablesNames)
+                {
+                    VariableDeclaration.DeclaredVariables.Add(varName);
+                }
                 this.valuesSequence = valuesSequence ;
                 expressionLine = Parser.GetLine ;
             }

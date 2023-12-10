@@ -85,9 +85,10 @@ namespace Interpreter
     public class UnexpectedToken : InterpreterErrors
     {
         public string BadToken ;
+  
         public UnexpectedToken(string BadToken)
         {
-            this.BadToken = BadToken ;
+            this.BadToken = BadToken;
         }
         public override string PrintError()
         { 
