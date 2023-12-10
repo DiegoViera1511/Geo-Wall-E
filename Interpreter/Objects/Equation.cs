@@ -1,6 +1,8 @@
 ﻿using System;
 namespace Interpreter
 {
+	
+	
 	public class Equation
 	{
 		 public Point? Point;
@@ -8,7 +10,7 @@ namespace Interpreter
 		 public bool IsPoint { get; set; }
 		 public double AX { get; }
 		 public double BY { get; }
-		  public double C { get; }
+		public double C { get; }
 		 public Constrains? ConstrainsX { get; }
 		 public Constrains? ConstrainsY { get; }
 		   public bool IsCircle { get; }
@@ -90,7 +92,54 @@ namespace Interpreter
 	
 	}
 	
+	public class CuadraticEquation
+	
+{
+	public double AX2 { get; }
+	public double BX { get; }
+	public double C { get; }
+	
+	public CuadraticEquation(double a, double b, double c)
+	{
+		AX2 = a;
+		BX = b;
+		C = c;
+	}
+	public List<double> SolveEquation()
+	{
+		List<double> result = new();
+
+		double discriminant = BX * BX - 4 * AX2 * C;
+	
+		if(discriminant > 0) // caso de dos soluciones
+		{
+			double x1 = (-BX + Math.Sqrt(discriminant)) / (2 * AX2);
+			double x2 = (-BX - Math.Sqrt(discriminant)) / (2 * AX2);
+			
+			result.Add(x1);
+			result.Add(x2);
+			
+			return result;
+		}
+			
+		if(discriminant == 0) // caso de una sola solución
+		{
+			double x = -BX / (2 * AX2);
+			
+			result.Add(x);
+			
+			return result;
+		}
+			
+		return result;
+	}
+}
+	
 	public class Constrains
+	
+	
+	
+	
 	{
 		public string? ParameterName { get; }
 		public double LowerLimit { get; }
@@ -121,7 +170,5 @@ namespace Interpreter
 	
 	
 	}
+
 }
-
-
-		
