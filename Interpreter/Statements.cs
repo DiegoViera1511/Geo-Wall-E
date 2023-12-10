@@ -65,12 +65,16 @@ namespace Interpreter
 			public Sequence ValuesSequence {get => valuesSequence;}
 			
 
-			public VariableSequenceDeclaration(List<string> variablesNames , Sequence valuesSequence)
-			{
-				this.variablesNames = variablesNames ;
-				this.valuesSequence = valuesSequence ;
-				expressionLine = Parser.GetLine ;
-			}
+            public VariableSequenceDeclaration(List<string> variablesNames , Sequence valuesSequence)
+            {
+                this.variablesNames = variablesNames ;
+                foreach(string varName in variablesNames)
+                {
+                    VariableDeclaration.DeclaredVariables.Add(varName);
+                }
+                this.valuesSequence = valuesSequence ;
+                expressionLine = Parser.GetLine ;
+            }
 
 			public override object? Accept(IVisitor visitor)
 			{

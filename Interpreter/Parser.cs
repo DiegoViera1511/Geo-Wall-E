@@ -72,7 +72,7 @@ namespace Interpreter
         }
     }
     
-    public class Parser //Crear una clase interpreter que contenga a parser 
+    public class Parser
     {
         
         public static int ActualLine = 0 ;
@@ -89,10 +89,17 @@ namespace Interpreter
         {
             get
             {
-                //Error si se va de índice
-                while(Lines[ActualLine].Count == 0)
+                if (EndOfFile())
+                {
+                    throw new DefaultError($"! ERROR: Missing expression (line : {ActualLine - 1})");
+                }
+                while (Lines[ActualLine].Count == 0 || Index >= Lines[ActualLine].Count)
                 {
                     Next();
+                    if (EndOfFile())
+                    {
+                        throw new DefaultError($"! ERROR: Missing expression (line : {ActualLine - 1})");
+                    }
                 }
                 return Lines[ActualLine][Index] ;
             }
@@ -128,6 +135,7 @@ namespace Interpreter
             Function.FunctionStore.Clear();
             GlobalVariables.FiguresVariables.Clear();
             GlobalVariables.Variables.Clear();
+            StatementExpression.VariableDeclaration.DeclaredVariables.Clear();
             GlobalVariables.FunctionsArgumentsValue.Clear();
             AnalizeFunctionsStack.Clear();
             Contexts.Clear();
@@ -200,9 +208,14 @@ namespace Interpreter
             Lines = Lexer.Tokenize(input);
             List<IExpression> expressions = new();
             if(EndOfFile()) return expressions ;
-            while(ActualLine < Lines.Count)
+            while (!EndOfFile())
             {
-                if(MatchToken(TokenType.LET))
+                if (Lines[ActualLine].Count == 0)
+                {
+                    ActualLine += 1;
+                    continue;
+                }
+                if (MatchToken(TokenType.LET))
                 {
                     Next();
                     expressions.Add(LetInExpression());
@@ -248,24 +261,28 @@ namespace Interpreter
                 }
                 else if(MatchToken(TokenType.ID))
                 {
-                    if(StatementExpression.FunctionDeclaration.DeclaredFunctions.Contains(CurrentToken.StringForm))
+                    if (StatementExpression.FunctionDeclaration.DeclaredFunctions.Contains(CurrentToken.StringForm))
                     {
                         expressions.Add(FunctionCallExpression());
+                    }
+                    else if (StatementExpression.VariableDeclaration.DeclaredVariables.Contains(CurrentToken.StringForm))
+                    {
+                        expressions.Add(NewExpression());
                     }
                     else
                     {
                         Next();
-                        if(MatchToken(TokenType.LEFT_PARENTHESIS))
+                        if (MatchToken(TokenType.LEFT_PARENTHESIS))
                         {
-                            expressions.Add(FunctionDeclarationStmst()) ;
+                            expressions.Add(FunctionDeclarationStmst());
                         }
-                        else if(MatchToken(TokenType.EQUAL))
+                        else if (MatchToken(TokenType.EQUAL))
                         {
-                            expressions.Add(VariableDeclarationStmts()) ;
+                            expressions.Add(VariableDeclarationStmts());
                         }
-                        else if(MatchToken(TokenType.COMMA))
+                        else if (MatchToken(TokenType.COMMA))
                         {
-                            expressions.Add(VariableSequenceDeclarationStmts()) ;
+                            expressions.Add(VariableSequenceDeclarationStmts());
                         }
                         else
                         {
