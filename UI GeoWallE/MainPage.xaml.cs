@@ -9,7 +9,12 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		CountLines = 10;
+		CountLines = 0;
+		for(int i = 1; i <= 150; i++)
+		{
+			CountLines += 1;
+			Lines.Text += $"{i}\n";
+		}
 
 	}
 
@@ -18,22 +23,47 @@ public partial class MainPage : ContentPage
 		string newLines = e.NewTextValue;
 		MatchCollection numberOfLines = Regex.Matches(newLines, @"\n");
 		int count = numberOfLines.Count;
-		if (count == 0)
+		if (count + 20 > CountLines)
 		{
-			CountLines = 10;
-			Lines.Text = "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n";
-            return;
-		}
-		if(count + 5 > CountLines)
-		{
-			for (int i = CountLines + 1; i < count + 5; i++)
+			for (int i = CountLines + 1; i < count + 30; i++)
 			{
 				Lines.Text += $"{i}\n";
 			}
-			CountLines += 5;
+			CountLines += 30;
 		}
 	}
 
+    void ButtonRun_Clicked(System.Object sender, System.EventArgs e)
+    {
+		Errors.Text = "";
+		try
+		{
+			GeoWallEInterpreter.RunInterpreter(Code.Text);
+		}
+		catch(InterpreterErrors errors)
+		{
+			Errors.Text = errors.PrintError();
+		}
+		catch(Exception er)
+		{
+			Errors.Text = er.Message;
+		}
+    }
+
+    void ButtonSave_Clicked(System.Object sender, System.EventArgs e)
+    {
+		//Pavlo
+    }
+
+    void ButtonClear_Clicked(System.Object sender, System.EventArgs e)
+    {
+		Code.Text = "";
+    }
+
+    void ButtonImport_Clicked(System.Object sender, System.EventArgs e)
+    {
+		//Pavlo
+    }
 }
 
 
