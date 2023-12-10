@@ -9,6 +9,7 @@
   <ItemGroup>
     <None Remove="InterpreterErrors\" />
     <None Remove="Visitors\" />
+    <None Remove="Objects\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="InterpreterErrors\" />
