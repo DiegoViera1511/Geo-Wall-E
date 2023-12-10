@@ -24,12 +24,12 @@ namespace Interpreter
 			return new Vector(x, y);
 		}
 		
-	/// <summary>
-	/// sobrecarga del operador '*' para la multiplicación de un vector por un escalar
-	/// </summary>
-	/// <param name="scalar">el valor del escalar tipo 'double'</param>
-	/// <param name="vec"> el objeto tipo 'Vector'</param>
-	/// <returns></returns>
+		/// <summary>
+		/// sobrecarga del operador '*' para la multiplicación de un vector por un escalar
+		/// </summary>
+		/// <param name="scalar">el valor del escalar tipo 'double'</param>
+		/// <param name="vec"> el objeto tipo 'Vector'</param>
+		/// <returns></returns>
 		public static Vector operator * (double scalar , Vector vec) //multiplicación por un escalar
 			{
 
