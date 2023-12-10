@@ -65,6 +65,7 @@ namespace Interpreter
 			public Sequence ValuesSequence {get => valuesSequence;}
 			
 
+
             public VariableSequenceDeclaration(List<string> variablesNames , Sequence valuesSequence)
             {
                 this.variablesNames = variablesNames ;
@@ -76,7 +77,7 @@ namespace Interpreter
                 expressionLine = Parser.GetLine ;
             }
 
-			public override object? Accept(IVisitor visitor)
+            public override object? Accept(IVisitor visitor)
 			{
 				return visitor.Visit(this);
 			}
