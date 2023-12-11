@@ -38,6 +38,19 @@ namespace Interpreter
 
 			return new Vector(x, y);
 		}
-	}
+
+        /// <summary>
+        /// La suma de un punto 'p' más un vector 'v' es otro punto 'new(x , y) que resulta de trasladar el punto 'p' según el vector 'v'
+        /// </summary>
+        /// <param name="p"> el punto </param>
+        /// <param name="v"> el vecto r</param>
+        /// <returns></returns>
+        public static Point operator +(Point p, Vector v)
+        {
+            double x = p.X + v.X;
+            double y = p.Y + v.Y;
+            return new(x, y);
+        }
+    }
 }
 
