@@ -1,8 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Graficos="clr-namespace:UI_GeoWallE.Graphics"
              x:Class="UI_GeoWallE.MainPage"
-             BackgroundColor="Black">
+             BackgroundColor="Black"
+             Title="Graficos">
+
+    <ContentPage.Resources>
+       
+        <Graficos:DrawPrints x:Key="print"/>
+
+    </ContentPage.Resources>
 
 
     <Grid Padding ="5"
@@ -98,7 +106,7 @@
             CornerRadius="0">
                 <HorizontalStackLayout HorizontalOptions="Center" >
 
-                    <GraphicsView Drawable="{StaticResource print}" HeightRequest="1050" WidthRequest="1095" BackgroundColor="White"/>
+                    <GraphicsView Drawable="{StaticResource print}" HeightRequest="1030" WidthRequest="1075" BackgroundColor="White"/>
 
                 </HorizontalStackLayout>
             </Frame>
