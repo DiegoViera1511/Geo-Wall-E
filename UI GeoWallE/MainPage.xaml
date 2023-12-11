@@ -106,7 +106,7 @@
             CornerRadius="0">
                 <HorizontalStackLayout HorizontalOptions="Center" >
 
-                    <GraphicsView Drawable="{StaticResource print}" HeightRequest="1050" WidthRequest="1095" BackgroundColor="White"/>
+                    <GraphicsView Drawable="{StaticResource print}" HeightRequest="1030" WidthRequest="1075" BackgroundColor="White"/>
 
                 </HorizontalStackLayout>
             </Frame>
