@@ -7,27 +7,30 @@ namespace UI_GeoWallE.Graphics
 {
 	public class DrawPrints : IDrawable
 	{
-        public static List<Interpreter.Point> kk = new List<Interpreter.Point> { new Interpreter.Point(200 ,460)};
+        public static List<Interpreter.Circle> kk = new List<Interpreter.Circle> {
+            new Interpreter.Circle(new Interpreter.Point(500 , 500) ,25 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,50 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,75 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,100 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,125 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,150 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,175 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,200 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,225 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,250 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,275 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,300 ),
+        new Interpreter.Circle(new Interpreter.Point(500 , 500) ,325 )};
         
-        static Interpreter.Point p1 = new Interpreter.Point(100, 500);
-        static Interpreter.Point p2 = new Interpreter.Point(200, 400);
-        static Interpreter.Point p3 = new Interpreter.Point(300, 300);
-        static Interpreter.Point p4 = new Interpreter.Point(400, 200);
-        static Interpreter.Point p5 = new Interpreter.Point(500, 100);
-
-        public static DrawPoint sample1 = new DrawPoint(p1);
-        public static DrawPoint sample2 = new DrawPoint(p2);
-        public static DrawPoint sample3 = new DrawPoint(p3);
-        public static DrawPoint sample4 = new DrawPoint(p4);
-        public static DrawPoint sample5 = new DrawPoint(p5);
+        
 
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
             for (int i = 0; i < kk.Count; i++)
             {
-                if (kk[i] is Interpreter.Point)
+                if (kk[i] is Interpreter.Circle)
                 {
-                    DrawPoint printiño = new DrawPoint(kk[i]);
+                    DrawCircle printiño = new DrawCircle(kk[i]);
 
                     printiño.Draw(canvas, dirtyRect);
                    
