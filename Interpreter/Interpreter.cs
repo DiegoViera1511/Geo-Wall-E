@@ -4,7 +4,7 @@ namespace Interpreter
 	public class GSharpInterpreter
 	{
 		Parser InterpreterParser = new Parser();
-		public List<Figure> GraficsViewPrints { get { return Parser.Prints; } }
+		public static List<Figure> GraficsViewPrints { get { return Parser.Prints; } }
 		public GSharpInterpreter()
 		{
 			Parser.ResetParser();

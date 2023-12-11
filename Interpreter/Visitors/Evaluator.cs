@@ -276,7 +276,7 @@ namespace Interpreter
                         else throw new DefaultError($"! ERROR: Draw function receives Figures not {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");
                     }
                 }
-                else throw new DefaultError($"!ERROR: Draw function receives Figures or Figures sequences not {Parser.GetObjectType(expr)} (line : {draw.ExpressionLine})");
+                else throw new DefaultError($"! ERROR: Draw function receives Figures or Figures sequences not {Parser.GetObjectType(expr)} (line : {draw.ExpressionLine})");
             }
             else if(draw.FigureDraw is Sequence)
             {

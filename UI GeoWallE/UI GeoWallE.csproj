@@ -58,4 +58,10 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Interpreter\Interpreter.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Graphics\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Graphics\" />
+	</ItemGroup>
 </Project>
