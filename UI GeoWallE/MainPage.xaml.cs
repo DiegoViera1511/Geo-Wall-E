@@ -39,6 +39,7 @@ public partial class MainPage : ContentPage
 		try
 		{
 			GeoWallEInterpreter.RunInterpreter(Code.Text);
+
 		}
 		catch(InterpreterErrors errors)
 		{
