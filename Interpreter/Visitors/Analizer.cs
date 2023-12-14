@@ -11,7 +11,7 @@ namespace Interpreter
         {
             if(Parser.CurrentContext.FunctionsArgumentsValue.ContainsKey(idExpr.Name))
             {
-                return Parser.CurrentContext.FunctionsArgumentsValue[idExpr.Name];
+                return Parser.GetObjectType(Parser.CurrentContext.FunctionsArgumentsValue[idExpr.Name]);
             }
             if(Parser.CurrentContext.Variables.ContainsKey(idExpr.Name))
             {
@@ -23,7 +23,7 @@ namespace Interpreter
             }
             else if(Parser.CurrentContext.FiguresVariables.ContainsKey(idExpr.Name))
             {
-                return Parser.CurrentContext.FiguresVariables[idExpr.Name];
+                return ExpressionType.Figure;
             }
             else
             {
@@ -164,7 +164,9 @@ namespace Interpreter
 
         public object? Visit(StatementExpression.Draw draw)
         {
+
             ExpressionType type = (ExpressionType)draw.FigureDraw.Accept(this);
+
             if(type.Equals(ExpressionType.Inference)) 
             {
                 return ExpressionType.Statement ;

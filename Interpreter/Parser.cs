@@ -172,10 +172,19 @@ namespace Interpreter
             {
                 return ExpressionType.Boolean ;
             }
-            else 
+            else if(exprValue is Figure)
             {
                 return ExpressionType.Figure ;
             }
+            else if(exprValue is Sequence)
+            {
+                return ExpressionType.Sequence;
+            }
+            else
+            {
+                throw new Exception("Error de tipado en función GetObjectType");
+            }
+
         }
 
         public void Evaluate(IExpression expr)
