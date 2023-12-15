@@ -28,6 +28,7 @@ namespace Interpreter
                 if(FiguresVariables[name].GetType() == variableValue.GetType())
                 {
                     FiguresVariables[name] = (Figure)variableValue ;
+                    return;
                 }
                 else throw new Exception("Error no se puede asignar una variable a valores de diferente tipo");
             }
@@ -38,10 +39,11 @@ namespace Interpreter
                 if(Variables[name].Accept(checkType).Equals(expr.Accept(checkType)) )
                 {
                     Variables[name] = expr ;
+                    return;
                 }
                 else throw new Exception("Error no se puede asignar una variable a valores de diferente tipo");
             }
-            if(variableValue is Figure)
+            else if(variableValue is Figure)
             {
                 FiguresVariables.Add( name ,(Figure)variableValue);
             }

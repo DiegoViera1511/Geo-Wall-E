@@ -40,6 +40,9 @@ public partial class MainPage : ContentPage
 		{
 			GeoWallEInterpreter.RunInterpreter(Code.Text);
 
+			Graphics.DrawPrints.Prints = GSharpInterpreter.GraficsViewPrints;
+
+			DrawZone.Invalidate();
 		}
 		catch(InterpreterErrors errors)
 		{

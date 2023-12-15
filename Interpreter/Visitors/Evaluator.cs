@@ -85,7 +85,15 @@ namespace Interpreter
 
         public object? Visit(StatementExpression.VariableDeclaration variableDeclaration)
         {
-            Parser.CurrentContext.AddVariable(variableDeclaration.VariableName , variableDeclaration.Value);  
+            if(variableDeclaration.Value is Expression.FigureDeclaration)
+            {
+                Figure f = (Figure)variableDeclaration.Value.Accept(this);
+                Parser.CurrentContext.AddVariable(variableDeclaration.VariableName, f);
+            }
+            else
+            {
+                Parser.CurrentContext.AddVariable(variableDeclaration.VariableName , variableDeclaration.Value);  
+            }
             return null ;
         }
 
