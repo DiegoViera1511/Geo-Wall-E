@@ -8,21 +8,8 @@ namespace UI_GeoWallE.Graphics
 {
     public class DrawPrints : IDrawable
     {
-        public static List<Interpreter.Figure> Prints = new List<Interpreter.Figure> {
-            //new Interpreter.Point(500, 200),
-            //new Interpreter.Point(800, 900),
-            //new Interpreter.Point(100, 500),
-            //new Interpreter.Ray(new Interpreter.Point(500, 200),new Interpreter.Point(800, 900)),
-            //new Interpreter.Ray(new Interpreter.Point(500, 200),new Interpreter.Point(100, 500)),
-            //new Interpreter.Arc(
-            //    new Interpreter.Point(500, 200),
-            //    new Interpreter.Point(100, 500),
-            //    new Interpreter.Point(800, 900),
-            //    200) 
-            };
-
-
-
+        public static List<Interpreter.Figure> Prints = new List<Interpreter.Figure>();
+           
         public void Draw(ICanvas canvas, RectF dirtyRect)
         {
             for (int i = 0; i < Prints.Count; i++)

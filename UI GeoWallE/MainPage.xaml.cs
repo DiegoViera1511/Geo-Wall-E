@@ -39,6 +39,7 @@ public partial class MainPage : ContentPage
 		try
 		{
 			GeoWallEInterpreter.RunInterpreter(Code.Text);
+			UI_GeoWallE.Graphics.DrawPrints.Prints = GeoWallEInterpreter.GraficsViewPrints;
 
 		}
 		catch(InterpreterErrors errors)
@@ -49,6 +50,7 @@ public partial class MainPage : ContentPage
 		{
 			Errors.Text = er.Message;
 		}
+
     }
 
     void ButtonSave_Clicked(System.Object sender, System.EventArgs e)
