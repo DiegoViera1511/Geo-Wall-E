@@ -1,3 +1,3 @@
-![header](https://capsule-render.vercel.app/api?text=GeoWallE!&height=300&type=venom&color=FCB6D0&fontColor=f7f5f5&animation=twinkling)
+![header](https://capsule-render.vercel.app/api?type=venom&height=200&text=GeoWallE&fontSize=70&color=0:8871e5,100:b678c4&stroke=b678c4)
   
                                                                   
