@@ -14,7 +14,7 @@ namespace Interpreter
 		 public Constrains? ConstrainsX { get; }
 		 public Constrains? ConstrainsY { get; }
 		   public bool IsCircle { get; }
-			public Constrains AngleConstrain => IsCircle ? _angleConstrain! : new("angle", 0, 2 * Math.PI);
+			public Constrains AngleConstrain => IsCircle ? _angleConstrain! : new( 0, 2 * Math.PI);
 		
 		public Equation(Point point) //ecuacion del punto
 		{
@@ -47,7 +47,7 @@ namespace Interpreter
 		 {
 				AX = ax; BY = bx; C = c;
 			
-				_angleConstrain = constrainAngle is null? new("angle", -Math.PI, Math.PI) : constrainAngle;
+				_angleConstrain = constrainAngle is null? new( -Math.PI, Math.PI) : constrainAngle;
 			
 				IsCircle = true;
 		 }
@@ -71,7 +71,7 @@ namespace Interpreter
 			return new(A, B, C, constrainsX, constrainsY);
 		 }
 	
-	public static Equation GetCircleEquation(Point center, Measure radius, 
+	public static Equation GetCircleEquation(Point center, double radius, 
 											Constrains? angleConstrain = null) //devuelve la ecuacion de la circunferencia/arco
 	{
 		//centro de la circunferencia/arco
@@ -79,7 +79,7 @@ namespace Interpreter
 		double k = center.Y;
 		
 		//radio de la circunferencia/arco
-		double r = (double)radius.Value;
+		double r = radius;
 		
 		//
 		double AX = -2 * h;
@@ -94,50 +94,50 @@ namespace Interpreter
 	
 	public class CuadraticEquation
 	
-{
-	public double AX2 { get; }
-	public double BX { get; }
-	public double C { get; }
+	{
+		public double AX2 { get; }
+		public double BX { get; }
+		public double C { get; }
 	
-	public CuadraticEquation(double a, double b, double c)
-	{
-		AX2 = a;
-		BX = b;
-		C = c;
-	}
-	public List<double> SolveEquation()
-	{
-		List<double> result = new();
+		public CuadraticEquation(double a, double b, double c)
+		{
+			AX2 = a;
+			BX = b;
+			C = c;
+		}
+		public List<double> SolveEquation()
+		{
+			List<double> result = new();
 
-		double discriminant = BX * BX - 4 * AX2 * C;
+			double discriminant = BX * BX - 4 * AX2 * C;
 	
-		if(discriminant > 0) // caso de dos soluciones
-		{
-			double x1 = (-BX + Math.Sqrt(discriminant)) / (2 * AX2);
-			double x2 = (-BX - Math.Sqrt(discriminant)) / (2 * AX2);
+			if(discriminant > 0) // caso de dos soluciones
+			{
+				double x1 = (-BX + Math.Sqrt(discriminant)) / (2 * AX2);
+				double x2 = (-BX - Math.Sqrt(discriminant)) / (2 * AX2);
 			
-			result.Add(x1);
-			result.Add(x2);
+				result.Add(x1);
+				result.Add(x2);
+			
+				return result;
+			}
+			
+			if(discriminant == 0) // caso de una sola solución
+			{
+				double x = -BX / (2 * AX2);
+			
+				result.Add(x);
+			
+				return result;
+			}
 			
 			return result;
 		}
-			
-		if(discriminant == 0) // caso de una sola solución
-		{
-			double x = -BX / (2 * AX2);
-			
-			result.Add(x);
-			
-			return result;
-		}
-			
-		return result;
-	}
-}
+    }
 	
 	public class Constrains
 	{
-		public string? ParameterName { get; }
+		
 		public double LowerLimit { get; }
 		public double UpperLimit { get; }
 		 public bool IsInRange(double parameter) => parameter >= LowerLimit && parameter <= UpperLimit;
@@ -154,9 +154,9 @@ namespace Interpreter
 			return true;	
 		 }
 		 
-		  public Constrains(string parameterName, double lowerLimit, double upperLimit)
+		  public Constrains( double lowerLimit, double upperLimit)
 			{
-				ParameterName = parameterName;
+		
 		
 				LowerLimit = lowerLimit < upperLimit ? lowerLimit : upperLimit;
 		

@@ -10,10 +10,15 @@ public class Circle : Figure
 
     public override string? Text { get ; set; }
 
+    public Equation Equation { get; }
+
+
     public Circle(Point center , double radio)
     {
         Center = center ;
         Radio = radio ;
+        Equation = Equation.GetCircleEquation(center, radio);
+
         FigureColor = Parser.actualColor ;
     }
 }
