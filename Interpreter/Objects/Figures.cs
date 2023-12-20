@@ -6,7 +6,9 @@ namespace Interpreter
 {
 	public abstract class Figure 
 	{
-		public abstract Color FigureColor { get; }
+        public Equation Equation { get; }
+
+        public abstract Color FigureColor { get; }
 
         public abstract string? Text { get; set; }
 		

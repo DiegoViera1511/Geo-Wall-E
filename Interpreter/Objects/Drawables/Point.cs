@@ -7,6 +7,8 @@ public class Point : Figure
 
     public double Y{ get; }
 
+    public Equation Equation { get; }
+
     public override Color FigureColor { get; }
 
     public override string? Text { get; set; }
