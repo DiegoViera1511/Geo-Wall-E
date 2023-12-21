@@ -11,7 +11,7 @@ public class Arc : Figure
 
     public double Measure { get; }
 
-    public override Color FigureColor { get;}
+    public override Color FigureColor { get; set;}
 
     public override string? Text { get; set; }
 
@@ -21,7 +21,6 @@ public class Arc : Figure
         P2 = p2 ;
         P3 = p3 ;
         Measure = measure ;
-        FigureColor = Parser.actualColor ;
     }
 
 }

@@ -7,7 +7,7 @@ public class Point : Figure
 
     public double Y{ get; }
 
-    public override Color FigureColor { get; }
+    public override Color FigureColor { get; set; }
 
     public override string? Text { get; set; }
 
@@ -15,6 +15,5 @@ public class Point : Figure
     {
         X = x ;
         Y = y ;
-        FigureColor = Parser.actualColor ;
     }
 }

@@ -105,7 +105,7 @@ namespace Interpreter
 			public static RandomPoint NewPoint(string name)
 			{
 				Random number = new Random();
-				return new RandomPoint(number.Next(100 , 700) , number.Next(100 , 700) , name);
+				return new RandomPoint(number.Next(100 , 900) , number.Next(100 , 900) , name);
 			}
 			
 			public override object? Accept(IVisitor visitor)

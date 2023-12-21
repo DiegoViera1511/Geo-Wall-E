@@ -7,7 +7,7 @@ public class Line : Figure
 
     public Point P2{ get; }
 
-    public override Color FigureColor { get; }
+    public override Color FigureColor { get; set;}
 
     public override string? Text { get ; set; }
 
@@ -15,7 +15,6 @@ public class Line : Figure
     {
         P1 = p1 ;
         P2 = p2 ;
-        FigureColor = Parser.actualColor ;
     }
 
 }

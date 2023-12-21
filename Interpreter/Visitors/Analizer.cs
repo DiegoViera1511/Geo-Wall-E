@@ -164,9 +164,11 @@ namespace Interpreter
 
         public object? Visit(StatementExpression.Draw draw)
         {
-
+            if(draw.FigureDraw is Expression.ID)
+            {
+                return ExpressionType.Statement ;
+            }
             ExpressionType type = (ExpressionType)draw.FigureDraw.Accept(this);
-
             if(type.Equals(ExpressionType.Inference)) 
             {
                 return ExpressionType.Statement ;

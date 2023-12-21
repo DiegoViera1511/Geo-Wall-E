@@ -6,7 +6,7 @@ public class Circle : Figure
 
     public double Radio { get; }
 
-    public override Color FigureColor { get; }
+    public override Color FigureColor { get; set;}
 
     public override string? Text { get ; set; }
 
@@ -14,6 +14,5 @@ public class Circle : Figure
     {
         Center = center ;
         Radio = radio ;
-        FigureColor = Parser.actualColor ;
     }
 }

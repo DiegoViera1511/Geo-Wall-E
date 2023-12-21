@@ -199,8 +199,8 @@ namespace Interpreter
         public object? Visit(StatementExpression.RandomCircle circle)
         {
             Random number = new Random();
-            Point center = new Point(number.Next(200 , 600) ,number.Next(200 , 600)) ;
-            Circle c = new Circle(center , number.Next(100 , 200));
+            Point center = new Point(number.Next(100 , 900) ,number.Next(100 , 900)) ;
+            Circle c = new Circle(center , number.Next(50 , 500));
             Parser.CurrentContext.AddVariable(circle.Name , c );
             return null ;
 
@@ -264,11 +264,12 @@ namespace Interpreter
                     {
                         f.Text = draw.FigureText;
                     }
+                    f.FigureColor = Parser.actualColor;
                     Parser.Prints.Add(f) ;
                 }
-                else if(expr is ValuesSecquence)
+                else if(Parser.CurrentContext.Variables.ContainsKey(idExpr.Name) && Parser.CurrentContext.Variables[idExpr.Name] is Sequence)
                 {
-                    ValuesSecquence sec = (ValuesSecquence)expr;
+                    ValuesSecquence sec = (ValuesSecquence)Parser.CurrentContext.Variables[idExpr.Name];
                     foreach(var figure in sec.SequenceValues)
                     {
                         object fig = figure.Accept(this);
@@ -279,12 +280,23 @@ namespace Interpreter
                             {
                                 f.Text = draw.FigureText;
                             }
+                            f.FigureColor = Parser.actualColor;
                             Parser.Prints.Add(f);
                         }
-                        else throw new DefaultError($"! ERROR: Draw function receives Figures not {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");
+                        else throw new DefaultError($"! ERROR: Draw function receives Figures {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");
                     }
                 }
-                else throw new DefaultError($"! ERROR: Draw function receives Figures or Figures sequences not {Parser.GetObjectType(expr)} (line : {draw.ExpressionLine})");
+                else throw new DefaultError($"! ERROR: Draw function receives Figures or Figures sequences {Parser.GetObjectType(expr)} (line : {draw.ExpressionLine})");
+            }
+            else if(draw.FigureDraw is Expression.FigureDeclaration)
+            {
+                Figure f = (Figure)draw.FigureDraw.Accept(this);
+                if(draw.FigureText is not null)
+                {
+                    f.Text = draw.FigureText;
+                }
+                f.FigureColor = Parser.actualColor;
+                Parser.Prints.Add(f);
             }
             else if(draw.FigureDraw is Sequence)
             {
@@ -301,6 +313,7 @@ namespace Interpreter
                             {
                                 f.Text = draw.FigureText;
                             }
+                            f.FigureColor = Parser.actualColor;
                             Parser.Prints.Add(f);
                         }
                         else throw new DefaultError($"! ERROR: Draw function receives Figures not {Parser.GetObjectType(fig)} (line : {draw.ExpressionLine})");

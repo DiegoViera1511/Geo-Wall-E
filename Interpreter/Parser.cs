@@ -273,7 +273,15 @@ namespace Interpreter
                     }
                     else if (StatementExpression.VariableDeclaration.DeclaredVariables.Contains(CurrentToken.StringForm))
                     {
-                        expressions.Add(NewExpression());
+                        if(Index < Lines[ActualLine].Count - 1 && Lines[ActualLine][Index + 1 ].TypeOfToken == TokenType.EQUAL)
+                        {
+                            Next();
+                            expressions.Add(VariableDeclarationStmts());
+                        }
+                        else
+                        {
+                            expressions.Add(NewExpression());
+                        }
                     }
                     else
                     {
@@ -995,43 +1003,48 @@ namespace Interpreter
 
         public static StatementExpression ColorStmts()
         {
+
+            Color color ;
             if(CurrentToken.StringForm == "blue")
             {
-                return new StatementExpression.SetColor(Color.Blue);
+                color = Color.Blue;
             }
             else if(CurrentToken.StringForm == "red")
             {
-                return new StatementExpression.SetColor(Color.Red);
+                color = Color.Red ;
             }
             else if(CurrentToken.StringForm == "yellow")
             {
-                return new StatementExpression.SetColor(Color.Yellow);
+                color = Color.Yellow ;
             }
             else if(CurrentToken.StringForm == "green")
             {
-                return new StatementExpression.SetColor(Color.Green);
+                color = Color.Green ;
             }
             else if(CurrentToken.StringForm == "cyan")
             {
-                return new StatementExpression.SetColor(Color.Cyan);
+                color = Color.Cyan ;
             }
             else if(CurrentToken.StringForm == "magenta")
             {
-                return new StatementExpression.SetColor(Color.Magenta);
+                color = Color.Magenta ;
             }
             else if(CurrentToken.StringForm == "white")
             {
-                return new StatementExpression.SetColor(Color.White);
+                color = Color.White ;
             }
             else if(CurrentToken.StringForm == "gray")
             {
-                return new StatementExpression.SetColor(Color.Gray);
+                color = Color.Gray ;
             }
             else if(CurrentToken.StringForm == "black")
             {
-                return new StatementExpression.SetColor(Color.Black);
+                color = Color.Black ;
             }
             else throw new DefaultError($"! ERROR : the name {CurrentToken.StringForm} is not a valid color");
+            Next();
+            return new StatementExpression.SetColor(color);
+            
         }
 
         public static StatementExpression RandomPointStmts()
