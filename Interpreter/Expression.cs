@@ -126,6 +126,25 @@ namespace Interpreter
             }
         }
 
+        public class FigureIntersect : Expression
+        {
+            public Expression f1 ;
+            public Expression f2 ;
+            int expressionLine ;
+            public override int ExpressionLine => expressionLine ;
+
+            public FigureIntersect(Expression f1 , Expression f2)
+            {   
+                this.f1 = f1 ;
+                this.f2 = f2 ;
+            }
+            public override object Accept(IVisitor visitor)
+            {
+                return visitor.Visit(this);
+            }
+        }
+
+
         public class Let_In : Expression
         {
             public static Context LetInVariables = new();

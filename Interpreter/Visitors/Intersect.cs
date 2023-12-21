@@ -19,7 +19,7 @@ namespace Interpreter
 
                 Equation equation2 = argument2.Equation;
 
-                List<Point> points = new(Solver.SolveCircularSystem(equation1, equation2));
+                List<Point> points = new (Solver.SolveCircularSystem(equation1, equation2));
 
             return points;
            

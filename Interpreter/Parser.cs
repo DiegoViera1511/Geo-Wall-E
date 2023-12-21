@@ -236,6 +236,11 @@ namespace Interpreter
                     Next();
                     expressions.Add(DrawStmts());
                 }
+                else if(MatchToken(TokenType.INTERSECT))
+                {
+                    Next();
+                    expressions.Add(IntersectExpression());
+                }
                 else if(MatchToken(TokenType.COLOR))
                 {
                     Next();
@@ -983,6 +988,28 @@ namespace Interpreter
             else throw new SyntaxErrors(SyntaxErrorType.MissingToken , "function call" , "(" , GetLine);
 
             return new Expression.FunctionCall(functionName , ParametersValue);
+        }
+
+        public static Expression IntersectExpression()
+        {
+            if(MatchToken(TokenType.LEFT_PARENTHESIS))
+            {
+                Next();
+                Expression fig1 = NewExpression();
+                if(MatchToken(TokenType.COMMA))
+                {
+                    Next();
+                    Expression fig2 = NewExpression();
+                    if(MatchToken(TokenType.RIGHT_PARENTHESIS))
+                    {
+                        Next();
+                        return new Expression.FigureIntersect(fig1 , fig2);
+                    }
+                     throw new SyntaxErrors(SyntaxErrorType.MissingToken , "intersect function" , ")" , GetLine);
+                }
+                throw new SyntaxErrors( SyntaxErrorType.MissingToken ,"intersect function" , "," , GetLine );
+            }
+            throw new SyntaxErrors(SyntaxErrorType.MissingToken , "intersect function" , "(" , GetLine);
         }
 
         #endregion

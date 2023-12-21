@@ -10,7 +10,7 @@ namespace Interpreter
 
         //KeyWords
         , IF , THEN , ELSE , DRAW , COLOR , RESTORE , SAMPLES , POINT , POINTS , LINE , SEGMENT 
-        , RAY , CIRCLE , IMPORT , ARC , MEASURE , COUNT , RANDOMS , LET , IN , SKIP ,
+        , RAY , CIRCLE , IMPORT , ARC , MEASURE , COUNT , RANDOMS , LET , IN , SKIP , INTERSECT ,
 
         //Colors
         Blue , Red , Yellow , Green , Cyan , Magenta , White , Gray , Black
@@ -221,6 +221,9 @@ namespace Interpreter
                             break ;
                             case "..." :
                             result[i].Add(new Token(token , TokenType.THREE_DOTS , actualLine));
+                            break ;
+                            case "intersect" :
+                            result[i].Add(new Token(token , TokenType.INTERSECT , actualLine));
                             break ;
                             default :
                             throw new LexicalErrors(token , actualLine);

@@ -45,9 +45,7 @@ namespace Interpreter
         object Visit(ComparisonLESS_EQUAL comparisonLESS_EQUAL);
         object Visit(Negation negation);
         object Visit(Negative negative);
+        object Visit(Expression.FigureIntersect figureIntersect);
     }
 
-    
-
-    // public class Analizer : IVisitor
 }

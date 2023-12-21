@@ -546,5 +546,32 @@ namespace Interpreter
             object num = negative.Right.Accept(this);
             return -1 * (double)num ;
         }
+
+        public object Visit(Expression.FigureIntersect figureIntersect)
+        {
+            object f1 = figureIntersect.f1.Accept(this);
+            if(f1 is Figure)
+            {
+                Figure fig1 = (Figure)f1 ;
+                object f2 = figureIntersect.f2.Accept(this);
+                if(f2 is Figure)
+                {
+                    Figure fig2= (Figure)f2 ;
+
+                    Equation e1 = fig1.Equation ;
+                    Equation e2 = fig2.Equation ;
+
+                    List<Point> points = new (Solver.SolveCircularSystem(e1 , e2 ));
+                    List<Expression> pointsExpressions = new List<Expression>();
+                    foreach(Point p in points)
+                    {
+                        pointsExpressions.Add(new Expression.PointDeclaration(new Expression.Atom.Number(p.X) , new Expression.Atom.Number(p.Y)));
+                    }
+                    return new ValuesSecquence(pointsExpressions);
+                }
+                throw new DefaultError($"function intersect receives figures not {Parser.GetObjectType(f2)} ( line : {figureIntersect.ExpressionLine} )");
+            }
+            throw new DefaultError($"function intersect receives figures not {Parser.GetObjectType(f1)} ( line : {figureIntersect.ExpressionLine} )");
+        }
     }
 }

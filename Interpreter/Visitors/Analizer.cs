@@ -642,5 +642,14 @@ namespace Interpreter
             }
             else throw new IncorrectOperator(type.ToString() , ExpressionType.Number , "-" , negative.ExpressionLine);
         }
+
+        public object Visit(Expression.FigureIntersect figureIntersect)
+        {
+            object f1 = figureIntersect.f1.Accept(this);
+            if(f1 is not Figure) throw new DefaultError($"function intersect receives figures not {Parser.GetObjectType(f1)} ( line : {figureIntersect.ExpressionLine} )");
+            object f2 = figureIntersect.f2.Accept(this);
+            if(f1 is not Figure) throw new DefaultError($"function intersect receives figures not {Parser.GetObjectType(f2)} ( line : {figureIntersect.ExpressionLine} )");
+            return ExpressionType.Sequence ;
+        }
     }
 }
