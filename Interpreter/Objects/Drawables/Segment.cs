@@ -31,7 +31,7 @@ public class Segment : Figure
 
         Equation = Equation.GetLineEquation(P1, P2, XconstrainsX, YconstrainsY);
 
-        FigureColor = Parser.actualColor;
+        FigureColor = Parser.actualColor ;
     }
 
 }
