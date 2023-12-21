@@ -11,10 +11,17 @@ public class Line : Figure
 
     public override string? Text { get ; set; }
 
+    public Equation Equation { get; }
+
     public Line(Point p1 , Point p2 )
     {
         P1 = p1 ;
+
         P2 = p2 ;
+
+        Equation = Equation.GetLineEquation(P1, P2);
+
+        FigureColor = Parser.actualColor ;
     }
 
 }

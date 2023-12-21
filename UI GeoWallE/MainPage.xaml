@@ -100,16 +100,22 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
+
+
+
             <Frame
             BackgroundColor="#FF414141"
             Padding="10"
             CornerRadius="0">
+            
                 <HorizontalStackLayout HorizontalOptions="Center" >
 
                     <GraphicsView x:Name = "DrawZone" Drawable="{DynamicResource print}" HeightRequest="1030" WidthRequest="1075" BackgroundColor="White"/>
 
                 </HorizontalStackLayout>
+                
             </Frame>
+
         <Frame
         BackgroundColor="#FF414141"
         Padding="2"
